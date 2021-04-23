@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { DemoFormSkuComponent } from './demo-form-sku/demo-form-sku.component';
+import { FormWithBuilderComponent } from './form-with-builder/form-with-builder.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DemoFormSkuComponent
+    DemoFormSkuComponent,
+    FormWithBuilderComponent
   ],
   imports: [
     BrowserModule,
