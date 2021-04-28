@@ -2,14 +2,28 @@
 	<h2 class="ui header">Demo Form:With Builder</h2>
 	<form [formGroup]="myForm"
 		(ngSubmit)="onSubmit(myForm.value)"
-		class="ui form">
-		<div class="field">
+		class="ui form"
+		[class.error]="!myForm.valid && myForm.touched">
+		<div class="field"
+			[class.error]="!name.valid && name.touched">
 			<label for="skuInput">Name</label>
 			<input type="text"
 				id="nameInput"
 				placeholder="Name"
-				[formControl]="myForm.controls['name']">
+				[(ngModel)]="Name"
+				[formControl]="name">
+			<div class="ui info message">
+				The name is: {{Name}}
+			</div>
+			<div *ngIf="!name.valid"
+				class="ui error message">Name is invalid</div>
+			<div *ngIf="name.hasError('required')"
+				class="ui error message">Name is required</div>
+			<div *ngIf="name.hasError('invalidName')"
+				class="ui error message">Name must begin with <span>123</span></div>
 		</div>
+		<div *ngIf="!myForm.valid"
+			class="ui error message">Form is invalid</div>
 		<button type="submit" class="ui button">Submit</button>
 	</form>
 </div>
